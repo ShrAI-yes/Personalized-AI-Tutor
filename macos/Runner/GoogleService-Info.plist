@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>621067507703-gml99l2dh62nbufvcm29q19q5mok29gd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.621067507703-gml99l2dh62nbufvcm29q19q5mok29gd</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDAvwkw0h9cfU0Q4lJmOFK9Cys0EgLnr80</string>
+	<key>GCM_SENDER_ID</key>
+	<string>621067507703</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.evSimulator.RunnerTests</string>
+	<key>PROJECT_ID</key>
+	<string>devignite-5823b</string>
+	<key>STORAGE_BUCKET</key>
+	<string>devignite-5823b.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:621067507703:ios:bb994bb1e640e3ef4200f2</string>
+	<key>DATABASE_URL</key>
+	<string>https://devignite-5823b-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

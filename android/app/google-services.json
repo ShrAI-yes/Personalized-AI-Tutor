@@ -1,0 +1,119 @@
+{
+  "project_info": {
+    "project_number": "621067507703",
+    "firebase_url": "https://devignite-5823b-default-rtdb.firebaseio.com",
+    "project_id": "devignite-5823b",
+    "storage_bucket": "devignite-5823b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621067507703:android:b2e8b1e00d1f808f4200f2",
+        "android_client_info": {
+          "package_name": "com.example.car"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621067507703-c0cbnncim10l72eu57t0cobd95n0o324.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg8Y8aGSvBJj0xTk8TILvUrrxXge_zy3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621067507703-c0cbnncim10l72eu57t0cobd95n0o324.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "621067507703-av13id395ar5nfnp10hecn6b6nqpi5n9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.car"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621067507703:android:681842c659023f044200f2",
+        "android_client_info": {
+          "package_name": "com.example.ev_simulator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621067507703-c0cbnncim10l72eu57t0cobd95n0o324.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg8Y8aGSvBJj0xTk8TILvUrrxXge_zy3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621067507703-c0cbnncim10l72eu57t0cobd95n0o324.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "621067507703-av13id395ar5nfnp10hecn6b6nqpi5n9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.car"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621067507703:android:0c27fe6bed3bdb214200f2",
+        "android_client_info": {
+          "package_name": "com.sharai.my_fit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621067507703-c0cbnncim10l72eu57t0cobd95n0o324.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg8Y8aGSvBJj0xTk8TILvUrrxXge_zy3M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621067507703-c0cbnncim10l72eu57t0cobd95n0o324.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "621067507703-av13id395ar5nfnp10hecn6b6nqpi5n9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.car"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
