@@ -1,1 +1,3 @@
 # Work in Progress...
+
+##Downloading Tesseract OCR Engine is necessary for Extraction of Text from PDF 
