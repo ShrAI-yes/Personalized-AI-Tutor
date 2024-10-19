@@ -4,4 +4,21 @@ A Flask server running on Cuda-powered PyTorch libraries using [EasyOCR](https:/
 
 ## How to use
 1. Clone this folder
-2. 
+2. Navigate to folder, and run following command.
+On Windows
+```shell
+pip install -r requirements.txt
+```
+On Linux
+```
+pip3 install -r requirements.txt
+```
+3. Start the server.
+On Windows,
+```
+python app.py
+```
+On Linux,
+```linux
+python3 ./app.py
+```
