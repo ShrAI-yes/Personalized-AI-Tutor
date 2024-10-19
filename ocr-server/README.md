@@ -45,11 +45,11 @@ A Flask server running on CUDA-powered PyTorch libraries using [EasyOCR](https:/
    ```
 
 ## How to use the server
-1. Send a `POST` request to the server URL.
-   For Image `<server_url>/ocr/img`
-   For PDF `<server_url>/ocr/pdf`
+1. Send a `POST` request to the server URL.  
+   For Image `<server_url>/ocr/img`  
+   For PDF `<server_url>/ocr/pdf`  
 2. Include a key-pair value of `filetype:<file.filetype>` in the body of the `POST` request.
 3. If the status is `200`, the response will be a JSON with the following format:
    ```json
-   {'text': ["Your file's text", "as separated along the lines"]}
+   {"text": ["Your file's text", "as separated along the lines"]}
    ```
