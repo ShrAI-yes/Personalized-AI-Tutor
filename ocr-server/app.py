@@ -3,8 +3,10 @@ from PIL import Image
 from flask import Flask, request, jsonify, render_template
 import io
 from PyPDF2 import PdfReader
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 reader = easyocr.Reader(['en'])
 
 @app.route('/', methods=['GET', 'POST'])
