@@ -31,22 +31,22 @@ const PreferancesPage = ({ params }) => {
   };
 
   return (
-    <div className="w-full h-full bg-background flex flex-col items-center justify-center">
+    <div className="w-full h-[87%]  bg-background flex flex-col items-center justify-start">
       {currentQuestion < preferanceData.length ? (
-        <div className="w-full p-4 flex flex-col items-center justify-center gap-4  mt-10">
-          <h1 className="text-2xl font-bold mb-10">
+        <div className="w-full h-[80%] flex flex-col items-center justify-center gap-4">
+          <h1 className="text-4xl h-8  md:w-[60%] text-center font-semibold text-white bg-inherit mb-8">
             What are your learning preferences?
           </h1>
-          <div className="w-1/3 flex flex-col items-center justify-center gap-4 h-full bg-white rounded-md p-4">
-            <h1 className="text-2xl font-bold">
+          <div className="w-1/3 h-min text-white flex flex-col items-center justify-center gap-4 rounded-md p-4">
+            <h1 className="text-2xl h-4 font-light">
               {preferanceData[currentQuestion].question}
             </h1>
-            <div className="w-2/3 mt-4 flex flex-col gap-3 items-center justify-center">
+            <div className="h-[200px] mt-12 w-2/3 flex flex-col gap-3 items-center justify-center">
               {preferanceData[currentQuestion].options.map((option) => (
                 <button
                   key={option}
                   onClick={() => handleOptionClick(option)}
-                  className="w-full h-10 border-2 text-black rounded-md hover:bg-[#41B3A2] hover:text-white transition-all duration-300"
+                  className="w-full text-wrap h-12 border-2 rounded-md hover:bg-[#6f42a9] hover:text-white transition-all duration-300"
                 >
                   {option}
                 </button>
@@ -55,19 +55,16 @@ const PreferancesPage = ({ params }) => {
           </div>
         </div>
       ) : (
-        <div className="w-full h-full flex flex-col items-center justify-center gap-4">
+        <div className="w-full flex flex-col items-center justify-center gap-4 px-8">
           <div className="w-full h-full chat flex items-center justify-between">
             <div className="w-1/2 h-full">
-              <iframe
-                src={url}
-                width={"100%"}
-                height={"100%"}
-                frameborder="0"
-              ></iframe>
+              <MemoizedIframe url={url} />
             </div>
             <div className="w-1/2 h-full">
-              <ChatComponent 
-              
+              <ChatComponent
+                bookName={
+                  url.split("/")[url.split("/").length - 1].split(".")[0]
+                }
               />
             </div>
           </div>
@@ -76,5 +73,13 @@ const PreferancesPage = ({ params }) => {
     </div>
   );
 };
+
+const Iframe = ({ url }) => {
+  return (
+    <iframe src={url} width={"100%"} height={"100%"} frameborder="0"></iframe>
+  );
+};
+
+const MemoizedIframe = React.memo(Iframe);
 
 export default PreferancesPage;

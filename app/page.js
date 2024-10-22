@@ -60,14 +60,14 @@ export default function Home() {
       });
       localStorage.setItem("formData", JSON.stringify(formData));
       toast.success("Form submitted successfully");
-      redirect("/home");
+      router.push("/home");
       setFormData({});
     }
   };
 
   return (
     <div
-      className="h-screen w-full text-foreground bg-background flex flex-col items-center p-4 gap-4
+      className="h-screen w-full text-foreground flex flex-col items-center p-4 gap-4
     "
     >
       {user ? (
