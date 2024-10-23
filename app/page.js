@@ -10,6 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   const router = useRouter();
@@ -66,33 +67,26 @@ export default function Home() {
   };
 
   return (
-    <div
-      className="h-screen w-full text-foreground flex flex-col items-center p-4 gap-4
-    "
-    >
+    <div className="w-full flex flex-col items-center p-4 gap-4">
       {user ? (
-        <div className="w-full h-fullflex flex-col gap-4">
-          <div className="flex items-center justify-between">
-            <h2> Welcome, {user.email}</h2>
-            <button className="btn btn-primary" onClick={() => signOut(auth)}>
-              Log Out
-            </button>
-          </div>
-
-          <div className="w-full flex flex-col gap-4 p-5 justify-center items-center">
-            <h3 className="mt-5 text-2xl font-bold">
+        <div className="w-full h-full flex flex-col gap-4">
+          <div className="w-full h-min mt-12 flex flex-col gap-4 p-5 justify-center items-center">
+            <h3 className="mt-5 text-2xl font-bold text-white h-min ">
               Please Verify Your Details
             </h3>
 
-            <div className="flex flex-col gap-12 mt-14">
+            <div className="w-full h-min flex flex-col gap-12 mt-14 justify-center items-center">
               {
                 <div className="flex flex-col gap-2">
-                  <label htmlFor={data[formCount].key}>
+                  <label
+                    htmlFor={data[formCount].key}
+                    className="text-white text-lg h-min"
+                  >
                     {data[formCount].key}
                   </label>
                   {data[formCount].type === "text" ? (
                     <input
-                      className="input border-2 outline-none border-blue-400 w-full max-w-xs focus:outline-none focus:right-1  focus:ring-blue-600 focus:border-blue-600"
+                      className="input border-2  outline-none border-[#6f42a9] w-full max-w-xs focus:outline-none focus:right-1  focus:ring-[#6f42a9] focus:border-[#6f42a9]"
                       type="text"
                       id={data[formCount].key}
                       value={formData[data[formCount].key]}
@@ -110,11 +104,11 @@ export default function Home() {
                       {data[formCount].options.map((option) => (
                         <label
                           key={option}
-                          className="label flex items-center gap-2 justify-start"
+                          className="label text-white flex items-center gap-2 justify-start"
                         >
                           <input
                             type="checkbox"
-                            className="checkbox"
+                            className="checkbox text-white border-2 border-[#6f42a9]"
                             onChange={(e) => {
                               // check if the option is already in the array
                               if (
@@ -140,7 +134,9 @@ export default function Home() {
                             }}
                             value={option}
                           />
-                          <span className="label-text">{option}</span>
+                          <span className="label-text text-white">
+                            {option}
+                          </span>
                         </label>
                       ))}
                     </div>
@@ -154,7 +150,7 @@ export default function Home() {
                           <Image
                             className={`w-20 h-20 cursor-pointer rounded-full object-contain border-2 ${
                               formData[data[formCount].key]?.includes(option)
-                                ? "border-blue-700"
+                                ? "border-[#6f42a9]"
                                 : "border-blue-300"
                             }`}
                             src={option}
@@ -191,9 +187,9 @@ export default function Home() {
                 </div>
               }
 
-              <div className="flex justify-between">
+              <div className="flex w-[50%] h-min justify-between">
                 <button
-                  className="btn btn-primary w-[80px]"
+                  className="w-[80px] text-white"
                   onClick={() => setFormCount(formCount - 1)}
                   disabled={formCount === 0}
                 >
@@ -214,7 +210,6 @@ export default function Home() {
                     Next
                   </button>
                 )}
-                <Toaster position="bottom-right" />
                 {formCount === data.length - 1 && (
                   <button
                     onClick={saveToFirebase}

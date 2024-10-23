@@ -7,9 +7,11 @@ import { auth } from "../util/firebase";
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Button from "./ui/Button";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -38,7 +40,7 @@ const Navbar = () => {
             transition-all duration-300 shadow-lg
             hover:after:content-[''] hover:after:absolute hover:after:w-full hover:after:h-0.5 hover:after:bg-[#fff] hover:after:bottom-0 hover:after:left-0
             "
-              href="/"
+              href="/home"
             >
               Home
             </Link>
@@ -49,7 +51,7 @@ const Navbar = () => {
             transition-all duration-300 shadow-lg
             hover:after:content-[''] hover:after:absolute hover:after:w-full hover:after:h-0.5 hover:after:bg-[#fff] hover:after:bottom-0 hover:  after:left-0
             "
-              href="/Modules"
+              href="/modules"
             >
               Modules
             </Link>
@@ -68,23 +70,25 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-4 space-x-5">
-        <div className="avatar cursor-pointer">
-          <div className="rounded-full h-10 w-10 ring">
-            <Image
-              src={user ? user?.photoURL : "/profile.webp"}
-              alt="user-image"
-              width={38}
-              height={38}
-            />
+      {user && (
+        <div className="flex items-center gap-4 space-x-5">
+          <div className="avatar cursor-pointer">
+            <div className="rounded-full h-10 w-10 ring">
+              <Image
+                src={user ? user?.photoURL : "/profile.webp"}
+                alt="user-image"
+                width={38}
+                height={38}
+              />
+            </div>
           </div>
+          <Button
+            text="Log out"
+            icon={<LogOut className="icon" />}
+            onClick={handleLogout}
+          />
         </div>
-        <Button
-          text="Log out"
-          icon={<LogOut className="icon" />}
-          onClick={handleLogout}
-        />
-      </div>
+      )}
     </nav>
   );
 };

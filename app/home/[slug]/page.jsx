@@ -6,10 +6,16 @@ import { useSearchParams } from "next/navigation";
 import preferanceData from "../../../common/preferanceData";
 import toast from "react-hot-toast";
 import ChatComponent from "../../../components/Chatbot";
+import textbooks from "../../../common/textbook";
 
 const PreferancesPage = ({ params }) => {
   const searchParams = useSearchParams();
-  const url = searchParams.get("url");
+  const name = searchParams.get("name");
+  const chapterName = searchParams.get("chapter");
+
+  const url = textbooks
+    .find((file) => file.name === name)
+    .chapters.find((chapter) => chapter.name === chapterName)?.path;
 
   const [preferance, setPreferance] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -23,7 +29,7 @@ const PreferancesPage = ({ params }) => {
       const formData = JSON.parse(localStorage.getItem("formData"));
       localStorage.setItem(
         "formData",
-        JSON.stringify({ ...formData, ...preferance, url })
+        JSON.stringify({ ...formData, ...preferance, url: url })
       );
       toast.success("Preferences saved successfully");
     }

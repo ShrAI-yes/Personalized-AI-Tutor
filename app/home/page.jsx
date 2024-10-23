@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { ref, getDownloadURL, listAll } from "firebase/storage";
 import Image from "next/image";
@@ -8,43 +8,28 @@ import { storage } from "../../util/firebase";
 import Link from "next/link";
 import Button from "../../components/ui/Button";
 import { FilePlus, LogOut } from "lucide-react";
+import textbooks from "../../common/textbook";
 
 const Home = () => {
   const router = useRouter();
-  const [files, setFiles] = useState([]);
+  const searchParams = useSearchParams();
+  const [files, setFiles] = useState(textbooks);
 
-  useEffect(() => {
-    // load all the files from firebase storage
-    const loadFiles = async () => {
-      const _files = await listAll(ref(storage, "/"));
-      _files.items.forEach(async (item) => {
-        const url = await getDownloadURL(item);
+  // useEffect(() => {
+  //   // load all the files from firebase storage
+  //   const loadFiles = async () => {
+  //     const _files = await listAll(ref(storage, "/"));
+  //     _files.items.forEach(async (item) => {
+  //       const url = await getDownloadURL(item);
 
-        if (!files.find((file) => file.name === item.name)) {
-          setFiles((prev) => [...prev, { url, name: item.name }]);
-        }
-      });
-    };
-    loadFiles();
-  }, []);
+  //       if (!files.find((file) => file.name === item.name)) {
+  //         setFiles((prev) => [...prev, { url, name: item.name }]);
+  //       }
+  //     });
+  //   };
+  //   loadFiles();
+  // }, []);
 
-  const coverPages = [
-    "/cover_pages/marathi.png",
-    // "/cover_pages/english.png",
-    // "/cover_pages/hindi.png",
-    // "/cover_pages/kannada.png",
-    // "/cover_pages/malayalam.png",
-    // "/cover_pages/tamil.png",
-    // "/cover_pages/telugu.png",
-  ];
-
-  const randomCoverPages = (num) => {
-    return `/cover_pages/${
-      coverPages[Math.floor(Math.random() * coverPages.length)]
-    }`;
-  };
-
-  // display all pdf's name
   return (
     <div className="h-full w-full flex flex-col items-center bg-[#141414]">
       <div className="flex h-screen w-full flex-col items-center justify-center py-8 my-12">
@@ -75,45 +60,39 @@ const Home = () => {
         Start Learning with your favourite Subjects
       </h1>
 
-      <div className="w-full flex justify-center items-center mt-10">
+      <div className="w-full h-min flex justify-center items-center mt-10">
         <div className="w-[80%] mb-8 pb-20 grid items-center grid-cols-3 md:grid-cols-3 gap-4 p-4 mt-10">
           {/* show only unique files */}
-          {files
-            .filter(
-              (file, index, self) =>
-                self.findIndex((t) => t.name === file.name) === index
-            )
-            .map((file) => (
-              <div
-                key={file.name}
-                className="w-[300px] px-3 h-min py-4 flex flex-col items-center gap-3 mx-4 rounded-md"
-              >
-                <Image
-                  className="w-[200px] h-[250px] cursor-pointer object-cover rounded-md"
-                  src={"/cover_pages/marathi.png"}
-                  alt={file.name}
-                  width={100}
-                  height={100}
-                />
+          {files.map((file) => (
+            <div
+              key={file.name}
+              className="w-[300px] px-3 h-min py-4 flex flex-col items-center gap-3 mx-4 rounded-md"
+            >
+              <Image
+                className="w-[200px] h-[250px] cursor-pointer object-cover rounded-md"
+                src={file.cover}
+                alt={file.cover}
+                width={100}
+                height={100}
+              />
 
-                <Link
-                  className={`h-11 w-[200px] flex items-center justify-center gap-2
+              <Link
+                className={`h-11 w-[200px] flex items-center justify-center gap-2
                     border-none text-white font-light ease-in transition-all duration-300
                     px-5 rounded-md text-lg text-center
                     
                     `}
-                  href={{
-                    pathname: `/home/${file.name}`,
-                    query: {
-                      url: file.url,
-                      name: file.name,
-                    },
-                  }}
-                >
-                  {file.name.toString().replace(".pdf", "")}
-                </Link>
-              </div>
-            ))}
+                href={{
+                  pathname: `/chapters`,
+                  query: {
+                    name: file.name,
+                  },
+                }}
+              >
+                {file.name.toString().replace(".pdf", "")}
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
     </div>
